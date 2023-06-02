@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from todoapp.models import Task
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 # 関数ベースビュー
 # def taskList(request):
@@ -20,3 +22,11 @@ class TaskList(ListView):
 class TaskDetail(DetailView):
     model = Task
     context_object_name = 'task'
+
+# Taskの作成ページ
+class TaskCreate(CreateView):
+    model = Task
+    # カラムを全部指定
+    fields = '__all__'
+    # 登録が終わった遷移先を指定
+    success_url = reverse_lazy('task-list')
