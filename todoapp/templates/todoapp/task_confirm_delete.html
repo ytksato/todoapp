@@ -1,0 +1,7 @@
+<h1>削除</h1>
+
+<form method="post">{% csrf_token %}
+    <p>"{{ task }}"を本当に削除しても良いですか？ ?</p>
+    {{ form.as_p }}
+    <input type="submit" value="削除する">
+</form>
