@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -23,6 +24,23 @@ class TaskList(LoginRequiredMixin, ListView):
     model = Task
     # テンプレートで使う変数名を指定
     context_object_name = 'tasks'
+
+    # フィルターをかける
+    # ListViewが持ってるメソッドをオーバーライドしている
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # contextを上書きもできる
+        context['test'] = 'testcontext'
+
+        # ログインしているユーザーのみ表示
+        # context['tasks']の中身にmodelのuserを利用してログインユーザー（self.request.user）でフィルターをかける
+        # テンプレートで使う変数名である「tasks」を上書きしている
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+
+        print(context)
+
+        return context
 
 # Taskの詳細ページ
 class TaskDetail(LoginRequiredMixin, DetailView):
