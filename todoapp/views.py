@@ -8,6 +8,9 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+# 認証周り
+from django.contrib.auth.views import LoginView, LogoutView
+
 # 関数ベースビュー
 # def taskList(request):
 #     return HttpResponse('Hello World')
@@ -42,3 +45,13 @@ class TaskDelete(DeleteView):
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('task-list')
+
+# 認証周り
+class TaskListLoginView(LoginView):
+    # デフォルトのテンプレート名はregistration/login.html
+    template_name = 'todoapp/login.html'
+    fields = '__all__'
+    #redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse_lazy('task-list')

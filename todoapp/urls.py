@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete
+from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, TaskListLoginView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     # 関数ベースビューの書き方
@@ -16,4 +17,8 @@ urlpatterns = [
     path('task/update/<int:pk>', TaskUpdate.as_view(), name='task-update'),
     # delete
     path('task/delete/<int:pk>', TaskDelete.as_view(), name='task-delete'),
+    # 認証周り（ログイン）
+    path('login/', TaskListLoginView.as_view(), name='login'),
+    # 認証周り（ログアウト）
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
 ]
