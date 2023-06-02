@@ -12,4 +12,5 @@ from todoapp.models import Task
 # クラスベースビュー
 class TaskList(ListView):
     model = Task
+    # テンプレートで使う変数名を指定
     context_object_name = 'tasks'
