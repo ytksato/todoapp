@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import TaskList, TaskDetail, TaskCreate
+from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate
 
 urlpatterns = [
     # 関数ベースビューの書き方
@@ -12,4 +12,6 @@ urlpatterns = [
     path('task/detail/<int:pk>', TaskDetail.as_view(), name='task-detail'),
     # create
     path('task/create/', TaskCreate.as_view(), name='task-create'),
+    # update
+    path('task/update/<int:pk>', TaskUpdate.as_view(), name='task-update'),
 ]

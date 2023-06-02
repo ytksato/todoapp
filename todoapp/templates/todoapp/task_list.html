@@ -1,4 +1,7 @@
 <h1>タスクリスト</h1>
+
+<a href="{% url 'task-create' %}">作成</a>
+
 <table>
   <tr>
     <th>タスク</th>
@@ -7,6 +10,7 @@
   <tr>
     <td>{{ task.title }}</td>
     <td><a href="{% url 'task-detail' task.id %}">確認</a></td>
+    <td><a href="{% url 'task-update' task.id %}">更新</a></td>
   </tr>
   {% endfor %}
 </table>
