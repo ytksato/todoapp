@@ -1,3 +1,5 @@
+{% extends 'todoapp/base.html' %}
+{% block content %}
 <h1>ログイン</h1>
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
@@ -6,3 +8,5 @@
 
 <p>すでにアカウントをもっていますか？</p>
 <a href="{% url 'login' %}">ログイン</a>
+{% endblock content %}
+```

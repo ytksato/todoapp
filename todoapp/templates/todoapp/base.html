@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODOアプリ</title>
+</head>
+
+<style>
+  body {
+    margin: 0;
+    padding: 55px;
+    background-color: #f5f5f5;
+    font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  }
+  .todoAppWrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+  a {
+    text-decoration: none;
+  }
+  h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: normal;
+  }
+  h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: normal;
+  }
+</style>
+
+<body>
+
+  <div class="todoAppWrapper">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
+</body>
+</html>
