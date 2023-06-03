@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, TaskListLoginView
+from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, TaskListLoginView, RegisterTodoApp
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -21,4 +21,6 @@ urlpatterns = [
     path('login/', TaskListLoginView.as_view(), name='login'),
     # 認証周り（ログアウト）
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    # 認証周り（ユーザー登録）
+    path('register/', RegisterTodoApp.as_view(), name='register'),
 ]

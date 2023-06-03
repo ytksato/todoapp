@@ -1,13 +1,11 @@
-{% if request.user.is_authenticated %}
-  <p>{{ request.user }}</p>
-  <a href="{% url 'logout' %}">ログアウト</a>
-{% else %}
-  <a href="{% url 'login' %}">ログイン</a>
-{% endif %}
-
-
 <h1>タスクリスト</h1>
 <h2>{{ test }}</h2>
+
+<form ,method="GET">
+<input type="text" name="search" value="{{ search }}">
+<input type="submit" value="検索">
+</form>
+
 <a href="{% url 'task-create' %}">作成</a>
 
 <table>
@@ -23,3 +21,12 @@
   </tr>
   {% endfor %}
 </table>
+
+<div>
+  {% if request.user.is_authenticated %}
+    <p>{{ request.user }}</p>
+    <a href="{% url 'logout' %}">ログアウト</a>
+  {% else %}
+    <a href="{% url 'login' %}">ログイン</a>
+  {% endif %}
+</div>
